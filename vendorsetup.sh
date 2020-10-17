@@ -58,10 +58,8 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
         export OF_QUICK_BACKUP_LIST="/boot;/data;"
 	export OF_PATCH_AVB20=1
         export FOX_DELETE_AROMAFM=1
-	export FOX_REMOVE_ZIP_BINARY=1
-	export FOX_SKIP_ZIP_BINARY=1
-        export OF_FLASHLIGHT_ENABLE=0
-	
+
+        #export OF_FLASHLIGHT_ENABLE=0
         #export FOX_ADVANCED_SECURITY=1
 
 	# let's see what are our build VARs
