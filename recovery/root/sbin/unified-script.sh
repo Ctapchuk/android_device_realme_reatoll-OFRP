@@ -4,7 +4,7 @@
 
 load_curtana()
 {
-    resetprop "ro.product.model" "Redmi Note 9"
+    resetprop "ro.product.model" "Redmi Note 9S"
     resetprop "ro.product.name" "curtana"
     resetprop "ro.build.product" "curtana"
     resetprop "ro.product.device" "curtana"
