@@ -18,6 +18,7 @@
 PRODUCT_RELEASE_NAME := curtana
 DEVICE_PATH := device/xiaomi/curtana
 
+$(call inherit-product, device/xiaomi/curtana/device.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
 # Inherit from our custom product configuration
@@ -35,4 +36,4 @@ PRODUCT_MANUFACTURER := Xiaomi
 # HACK: Set vendor patch level
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.build.security_patch=2099-12-31
-
+#
