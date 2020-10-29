@@ -18,13 +18,14 @@
 # 	Please maintain this if you use this script or any part of it
 #
 FDEVICE="curtana"
+#set -o xtrace
 
 fox_get_target_device() {
-local chkdev=$(echo "$BASH_SOURCE" | grep $FDEVICE)
+local chkdev=$(echo "$BASH_SOURCE" | grep -w $FDEVICE)
    if [ -n "$chkdev" ]; then 
       FOX_BUILD_DEVICE="$FDEVICE"
    else
-      chkdev=$(set | grep BASH_ARGV | grep $FDEVICE)
+      chkdev=$(set | grep BASH_ARGV | grep -w $FDEVICE)
       [ -n "$chkdev" ] && FOX_BUILD_DEVICE="$FDEVICE"
    fi
 }
@@ -37,8 +38,8 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
    	export TW_DEFAULT_LANGUAGE="en"
 	export OF_KEEP_FORCED_ENCRYPTION=1
 	export TARGET_DEVICE_ALT="joyeuse,gram,excalibur"
-	export OF_TARGET_DEVICES="curtana,joyeuse,gram,excalibur"
-	export OF_SCREEN_H=2300
+	#export OF_TARGET_DEVICES="curtana,joyeuse,gram,excalibur" # this should ideally be done by flashable zip creators
+	export OF_SCREEN_H=2400
 	export OF_USE_MAGISKBOOT=1
 	export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
 	export OF_DONT_PATCH_ENCRYPTED_DEVICE=1
@@ -59,7 +60,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_PATCH_AVB20=1
         export FOX_DELETE_AROMAFM=1
 
-        #export OF_FLASHLIGHT_ENABLE=0
         #export FOX_ADVANCED_SECURITY=1
 
 	# let's see what are our build VARs
