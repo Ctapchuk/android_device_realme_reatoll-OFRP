@@ -45,6 +45,11 @@ on init
     write /config/usb_gadget/g1/os_desc/qw_sign "MSFT100"
     setprop sys.usb.configfs 1
 
+on boot
+    mkdir /config/usb_gadget/g1/functions/mass_storage.0
+    mkdir /config/usb_gadget/g1/functions/mtp.gs0
+    mkdir /config/usb_gadget/g1/functions/ptp.gs1
+
 on property:ro.boot.usbconfigfs=false
    setprop sys.usb.configfs 0
 
@@ -103,7 +108,13 @@ on fs && property:sys.usb.configfs=0
     write /sys/class/android_usb/android0/iProduct ${ro.product.model}
     write /sys/class/android_usb/android0/iSerial ${ro.serialno}
 
+on property:sys.usb.config=adb
+    start adbd
+
 on property:sys.usb.config=adb && property:sys.usb.config_disable=0 && property:sys.usb.configfs=1
+    start adbd
+
+on property:sys.usb.config=mtp,adb
     start adbd
 
 on property:sys.usb.config=fastboot
@@ -232,10 +243,4 @@ on property:sys.usb.config=mtp,adb && property:sys.usb.configfs=0
     write /sys/class/android_usb/android0/functions mtp,adb
     write /sys/class/android_usb/android0/enable 1
     setprop sys.usb.state  ${sys.usb.config}
-
-on property:sys.usb.config=mtp,adb
-    start adbd
-
-on property:sys.usb.config=adb
-    start adbd
 #
