@@ -61,6 +61,8 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
         export FOX_DELETE_AROMAFM=1
 
         #export FOX_ADVANCED_SECURITY=1
+	#export OF_RELOAD_FSTAB_DYNAMIC_PARTITIONS=1
+	export OF_SILENCE_MIUI_MOUNT_COMPLAINTS=1
 
 	# let's see what are our build VARs
 	if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then

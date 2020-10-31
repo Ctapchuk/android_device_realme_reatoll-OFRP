@@ -40,6 +40,8 @@ on early-fs
 on init
     start hwservicemanager
     setprop crypto.ready 1
+    chmod 0777 /init.recovery.qcom.sh
+    start init-recovery-qcom-sh
 
 service sbinqseecomd /sbin/qseecomd
     user root
@@ -87,6 +89,13 @@ service keymaster-4-0 /sbin/android.hardware.keymaster@4.0-service-qti
     seclabel u:r:recovery:s0
 
 service unified-script /sbin/unified-script.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+service init-recovery-qcom-sh /init.recovery.qcom.sh
     user root
     group root
     disabled
