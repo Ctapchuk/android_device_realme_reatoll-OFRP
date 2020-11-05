@@ -55,14 +55,13 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
         export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
         export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
         export FOX_R11=1
-        export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
         export OF_QUICK_BACKUP_LIST="/boot;/data;"
 	export OF_PATCH_AVB20=1
         export FOX_DELETE_AROMAFM=1
 
-        #export FOX_ADVANCED_SECURITY=1
-	#export OF_RELOAD_FSTAB_DYNAMIC_PARTITIONS=1
 	export OF_SILENCE_MIUI_MOUNT_COMPLAINTS=1
+        #export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
+        #export FOX_ADVANCED_SECURITY=1
 
 	# let's see what are our build VARs
 	if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then
