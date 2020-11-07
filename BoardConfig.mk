@@ -64,10 +64,9 @@ BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 
-
-###########################################################
-# FOX_BUILD_FULL_KERNEL_SOURCES := 1
+# ---
 ifeq ($(FOX_BUILD_FULL_KERNEL_SOURCES),1)
+# don't use this!
   TARGET_KERNEL_CLANG_COMPILE := true
   TARGET_KERNEL_SOURCE := kernel/xiaomi/curtana
   BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
@@ -76,16 +75,14 @@ ifeq ($(FOX_BUILD_FULL_KERNEL_SOURCES),1)
 else
   BOARD_INCLUDE_RECOVERY_DTBO := true
   BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-  BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
   TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
   BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo
-#  TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
-  TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz
+  TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
+  BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
+# override stock with yuki, sdfat, clang10 ? (has adb/mtp issues)
+#  TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz
 endif
-###########################################################
-
-# QCOM
-#TARGET_USE_SDCLANG := true
+#---
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := curtana,joyeuse,gram,excalibur
