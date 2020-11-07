@@ -39,6 +39,8 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_KEEP_FORCED_ENCRYPTION=1
 	export TARGET_DEVICE_ALT="joyeuse,gram,excalibur"
 	#export OF_TARGET_DEVICES="curtana,joyeuse,gram,excalibur" # this should ideally be done by flashable zip creators
+	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
+	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
 	export OF_SCREEN_H=2400
 	export OF_USE_MAGISKBOOT=1
 	export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
