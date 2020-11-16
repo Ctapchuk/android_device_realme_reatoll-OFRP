@@ -36,7 +36,7 @@ fi
 
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
    	export TW_DEFAULT_LANGUAGE="en"
-	export OF_KEEP_FORCED_ENCRYPTION=1
+	export OF_KEEP_DM_VERITY_FORCED_ENCRYPTION=1
 	export TARGET_DEVICE_ALT="joyeuse,gram,excalibur"
 	#export OF_TARGET_DEVICES="curtana,joyeuse,gram,excalibur" # this should ideally be done by flashable zip creators
 	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
@@ -53,16 +53,14 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_USE_NANO_EDITOR=1
 	export FOX_USE_TAR_BINARY=1
 	export OF_SKIP_MULTIUSER_FOLDERS_BACKUP=1
-        export OF_USE_SYSTEM_FINGERPRINT=1
         export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
         export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
         export FOX_R11=1
         export OF_QUICK_BACKUP_LIST="/boot;/data;"
 	export OF_PATCH_AVB20=1
         export FOX_DELETE_AROMAFM=1
+        export FOX_BUGGED_AOSP_ARB_WORKAROUND="1546300800"; # Tuesday, January 1, 2019 12:00:00 AM GMT+00:00
 
-	export OF_SILENCE_MIUI_MOUNT_COMPLAINTS=1
-        #export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
         #export FOX_ADVANCED_SECURITY=1
 
 	# let's see what are our build VARs
