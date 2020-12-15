@@ -1,6 +1,8 @@
 #
 # Copyright (C) 2019 The TwrpBuilder Open-Source Project
 #
+# Copyright (C) 2020-2021 OrangeFox Recovery Project
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -64,43 +66,47 @@ BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 
-# ---
-ifeq ($(FOX_BUILD_FULL_KERNEL_SOURCES),1)
-# don't use this!
-  TARGET_KERNEL_CLANG_COMPILE := true
-  TARGET_KERNEL_SOURCE := kernel/xiaomi/curtana
-  BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-  TARGET_KERNEL_CONFIG := vendor/curtana-fox_defconfig
-  BOARD_KERNEL_SEPARATED_DTBO := true
+# --- prebuilt kernel
+BOARD_INCLUDE_RECOVERY_DTBO := true
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+
+ifeq ($(FOX_USE_NEW_KERNEL),1)
+  # ----- Yuki kernel (built from source) -----
+  BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/newkernel/dtbs
+  BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/newkernel/dtbo.img
+  TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/newkernel/Image.gz
+else ifeq ($(FOX_USE_NEW_STOCK_KERNEL),1)
+  # newer stock kernel (from latest global MIUI 12)
+  BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilt_new/dtbs
+  BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt_new/dtbo
+  TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt_new/kernel
 else
-  BOARD_INCLUDE_RECOVERY_DTBO := true
-  BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-  TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
+  BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilt/dtbs
   BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo
   TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
-  BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
-# override stock with yuki, sdfat, clang10 ? (has adb/mtp issues)
-#  TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz
+#  TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
+#  BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 endif
-#---
+#---------------------------------
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := curtana,joyeuse,gram,excalibur
+
 # Avb
 BOARD_AVB_ENABLE := true
 BOARD_AVB_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 
 # Partitions
-#BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOARD_FLASH_BLOCK_SIZE := 262144
 BOARD_BOOTIMAGE_PARTITION_SIZE := 134217728
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 134217728
+BOARD_DTBOIMG_PARTITION_SIZE := 8388608
 
 # Dynamic Partition
 BOARD_SUPER_PARTITION_SIZE := 9126805504
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 9126805504
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := product vendor system odm
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := product vendor system
 
 # System as root
 BOARD_ROOT_EXTRA_FOLDERS := bluetooth dsp firmware persist
@@ -125,6 +131,9 @@ TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
 BOARD_USES_METADATA_PARTITION := true
+
+# CUSTOM_LUN_FILE
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
