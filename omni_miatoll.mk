@@ -1,6 +1,8 @@
 #
 # Copyright (C) 2019 The TwrpBuilder Open-Source Project
 #
+# Copyright (C) 2020-2021 OrangeFox Recovery Project
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -15,10 +17,10 @@
 #
 
 # Release name
-PRODUCT_RELEASE_NAME := curtana
-DEVICE_PATH := device/xiaomi/curtana
+PRODUCT_RELEASE_NAME := miatoll
+DEVICE_PATH := device/xiaomi/miatoll
 
-$(call inherit-product, device/xiaomi/curtana/device.mk)
+$(call inherit-product, device/xiaomi/miatoll/device.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
 # Inherit from our custom product configuration
@@ -27,8 +29,8 @@ $(call inherit-product, vendor/omni/config/common.mk)
 #PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := curtana
-PRODUCT_NAME := omni_curtana
+PRODUCT_DEVICE := miatoll
+PRODUCT_NAME := omni_miatoll
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi Note 9S
 PRODUCT_MANUFACTURER := Xiaomi
