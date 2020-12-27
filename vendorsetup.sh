@@ -41,7 +41,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export TARGET_DEVICE_ALT="curtana,joyeuse,gram,excalibur"
 	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
 	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
-	export OF_SCREEN_H=2400
+
 	export OF_USE_MAGISKBOOT=1
 	export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
 	export OF_DONT_PATCH_ENCRYPTED_DEVICE=1
@@ -64,6 +64,14 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
         export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
         export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
         export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
+
+	# screen settings
+	export OF_SCREEN_H=2400
+	export OF_STATUS_H=100
+	export OF_STATUS_INDENT_LEFT=48
+	export OF_STATUS_INDENT_RIGHT=48
+	export OF_CLOCK_POS=1
+	#export OF_HIDE_NOTCH=1
 
 	# advanced security
         #export FOX_ADVANCED_SECURITY=1
