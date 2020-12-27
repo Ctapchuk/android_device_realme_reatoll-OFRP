@@ -11,8 +11,8 @@
 #system /system 	ext4 	logical
 #vendor /vendor 	ext4 	display="Vendor";logical
 #product /product 	ext4 	display="Product";logical
+#/super_image   	emmc    /dev/block/bootdevice/by-name/super                       flags=backup=1;display="Super"
 
-/super_image   	emmc    /dev/block/bootdevice/by-name/super                       flags=backup=1;display="Super"
 /cache         	ext4    /dev/block/bootdevice/by-name/cache			  flags=display="Cache"
 /data          	f2fs    /dev/block/bootdevice/by-name/userdata                    flags=fileencryption=ice:aes-256-cts;wrappedkey;keydirectory=/metadata/vold/metadata_encryption
 /boot          	emmc    /dev/block/bootdevice/by-name/boot
