@@ -1,8 +1,0 @@
-# Android fstab file.
-# The filesystem that contains the filesystem checker binary (typically /system) cannot
-# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
-
-system 	/system		ext4			logical
-vendor 	/vendor		ext4			display="Vendor";logical
-product /product	ext4			display="Product";logical
-
