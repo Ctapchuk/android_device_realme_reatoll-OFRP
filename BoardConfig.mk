@@ -44,8 +44,20 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno618
 QCOM_BOARD_PLATFORMS += atoll
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 cgroup.memory=nokmem,nosocket
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive androidboot.init_fatal_reboot_target=recovery
+BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 \
+	androidboot.hardware=qcom \
+	androidboot.console=ttyMSM0 \
+	androidboot.memcg=1 \
+	lpm_levels.sleep_disabled=1 \
+	video=vfb:640x400,bpp=32,memsize=3072000 \
+	msm_rtb.filter=0x237 \
+	service_locator.enable=1 \
+	androidboot.usbcontroller=a600000.dwc3 \
+	swiotlb=2048 \
+	cgroup.memory=nokmem,nosocket \
+	androidboot.selinux=permissive \
+	androidboot.init_fatal_reboot_target=recovery
+
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_BOOT_HEADER_VERSION := 2
@@ -69,24 +81,23 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 # --- prebuilt kernel
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+KERNEL_DIRECTORY := $(DEVICE_PATH)/prebuilt
 
 ifeq ($(FOX_USE_NEW_KERNEL),1)
   # ----- Yuki kernel (built from source) -----
-  BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/newkernel/dtbs
-  BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/newkernel/dtbo.img
-  TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/newkernel/Image.gz
+  KERNEL_DIRECTORY := $(DEVICE_PATH)/newkernel
 else ifeq ($(FOX_USE_NEW_STOCK_KERNEL),1)
   # newer stock kernel (from latest global MIUI 12)
-  BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilt_new/dtbs
-  BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt_new/dtbo
-  TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt_new/kernel
-else
-  BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilt/dtbs
-  BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo
-  TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
-#  TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
-#  BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
+  KERNEL_DIRECTORY := $(DEVICE_PATH)/prebuilt_new
+else ifeq ($(FOX_USE_OLD_STOCK_KERNEL),1)
+  KERNEL_DIRECTORY := $(DEVICE_PATH)/prebuilt.old
 endif
+
+BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_DIRECTORY)/dtbs
+BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_DIRECTORY)/dtbo
+TARGET_PREBUILT_KERNEL := $(KERNEL_DIRECTORY)/kernel
+# TARGET_PREBUILT_DTB := $(KERNEL_DIRECTORY)/dtb
+# BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 #---------------------------------
 
 # Assert
