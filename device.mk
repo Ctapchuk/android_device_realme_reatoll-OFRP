@@ -25,6 +25,13 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 #BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE := 67108864
 #BOARD_VENDORIMAGE_PARTITION_RESERVED_SIZE := 67108864
 
+# use twrp-common for decryption
+BOARD_USES_QCOM_FBE_DECRYPTION := true
+
+PRODUCT_PACKAGES_ENG += \
+    qcom_decrypt \
+    qcom_decrypt_fbe
+
 # fastbootd stuff
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.0-impl-mock \
