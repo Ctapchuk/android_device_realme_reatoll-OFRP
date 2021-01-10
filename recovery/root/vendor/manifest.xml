@@ -326,7 +326,7 @@
         <fqname>@1.0::IUsb/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.vibrator</name>
+        <name>vendor.qti.hardware.vibrator</name>
         <transport>hwbinder</transport>
         <version>1.2</version>
         <interface>

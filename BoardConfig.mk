@@ -92,7 +92,6 @@ else ifeq ($(FOX_USE_NEW_STOCK_KERNEL),1)
 else ifeq ($(FOX_USE_OLD_STOCK_KERNEL),1)
   KERNEL_DIRECTORY := $(DEVICE_PATH)/prebuilt.old
 endif
-
 BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_DIRECTORY)/dtbs
 BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_DIRECTORY)/dtbo
 TARGET_PREBUILT_KERNEL := $(KERNEL_DIRECTORY)/kernel
@@ -145,6 +144,9 @@ BOARD_USES_METADATA_PARTITION := true
 
 # CUSTOM_LUN_FILE
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
+
+# haptics
+TW_SUPPORT_INPUT_1_2_HAPTICS := true
 
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
