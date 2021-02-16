@@ -77,6 +77,9 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	# maximum permissible splash image size (in kilobytes); do NOT increase!
 	export OF_SPLASH_MAX_SIZE=104
 
+	# disable the app manager
+	export FOX_DISABLE_APP_MANAGER=1
+
 	# advanced security
         #export FOX_ADVANCED_SECURITY=1
 
