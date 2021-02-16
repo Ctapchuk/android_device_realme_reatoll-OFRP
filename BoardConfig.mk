@@ -142,9 +142,6 @@ TW_INCLUDE_CRYPTO_FBE := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
 BOARD_USES_METADATA_PARTITION := true
 
-# CUSTOM_LUN_FILE
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
-
 # haptics
 TW_SUPPORT_INPUT_1_2_HAPTICS := true
 
