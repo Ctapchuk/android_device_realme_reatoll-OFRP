@@ -82,22 +82,18 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 KERNEL_DIRECTORY := $(DEVICE_PATH)/prebuilt
-
-ifeq ($(FOX_USE_NEW_KERNEL),1)
-  # ----- Yuki kernel (built from source) -----
-  KERNEL_DIRECTORY := $(DEVICE_PATH)/newkernel
-else ifeq ($(FOX_USE_NEW_STOCK_KERNEL),1)
-  # newer stock kernel (from latest global MIUI 12)
-  KERNEL_DIRECTORY := $(DEVICE_PATH)/prebuilt_new
-else ifeq ($(FOX_USE_OLD_STOCK_KERNEL),1)
-  KERNEL_DIRECTORY := $(DEVICE_PATH)/prebuilt.old
-endif
 BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_DIRECTORY)/dtbs
-BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_DIRECTORY)/dtbo
-TARGET_PREBUILT_KERNEL := $(KERNEL_DIRECTORY)/kernel
-# TARGET_PREBUILT_DTB := $(KERNEL_DIRECTORY)/dtb
-# BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
-#---------------------------------
+
+# stock miui kernel (V12.0.3.0.QJWMIXM_20210117)
+ifeq ($(FOX_USE_STOCK_KERNEL),1)
+   BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_DIRECTORY)/dtbo
+   TARGET_PREBUILT_KERNEL := $(KERNEL_DIRECTORY)/kernel
+# Yuki kernel, built from source
+else
+   BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_DIRECTORY)/dtbo.img
+   TARGET_PREBUILT_KERNEL := $(KERNEL_DIRECTORY)/Image.gz
+endif
+#---
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := curtana,joyeuse,gram,excalibur
