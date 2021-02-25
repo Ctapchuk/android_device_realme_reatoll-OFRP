@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2019 The TwrpBuilder Open-Source Project
+# Copyright (C) 2021 The TwrpBuilder Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,6 +15,6 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_miatoll.mk
+    $(LOCAL_DIR)/omni_RMX2061.mk
 
-COMMON_LUNCH_CHOICES := omni_miatoll-eng
+COMMON_LUNCH_CHOICES := omni_RMX2061-eng
