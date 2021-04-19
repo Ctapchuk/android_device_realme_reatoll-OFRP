@@ -41,7 +41,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
  	#OFR build settings & info
 	export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
 	export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
-	export TARGET_DEVICE_ALT="RMX2061, RMX2063"
+	export TARGET_DEVICE_ALT="RMX2061"
 	export OF_SUPPORT_OZIP_DECRYPTION=1
 	export TW_OZIP_DECRYPT_KEY="0000"
 	export OF_DISABLE_MIUI_SPECIFIC_FEATURES=1
@@ -55,6 +55,8 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_REPLACE_TOOLBOX_GETPROP=1
 	export FOX_USE_TAR_BINARY=1
 	export FOX_USE_XZ_UTILS=1
+	export FOX_USE_SED_BINARY=1
+	#export FOX_BUILD_BASH=1
 	
 	#OFR patches
 	export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
@@ -68,8 +70,9 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_SKIP_MULTIUSER_FOLDERS_BACKUP=1
         export OF_QUICK_BACKUP_LIST="/data;/super;/boot;"
 	export OF_SCREEN_H=2400
-	export OF_STATUS_H=108
-	export OF_STATUS_INDENT_LEFT=264
+	#export OF_STATUS_H=108
+	export OF_STATUS_H=132
+	export OF_STATUS_INDENT_LEFT=261
 	export OF_STATUS_INDENT_RIGHT=34
 	export OF_ALLOW_DISABLE_NAVBAR=0
         export FOX_ADVANCED_SECURITY=1
@@ -77,6 +80,8 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
         export OF_USE_GREEN_LED=0
         export FOX_DELETE_AROMAFM=1
         export FOX_ENABLE_APP_MANAGER=1
+        export OF_RUN_POST_FORMAT_PROCESS=1
+        export OF_ENABLE_USB_STORAGE=1
 
 	# let's see what are our build VARs
 	if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then
