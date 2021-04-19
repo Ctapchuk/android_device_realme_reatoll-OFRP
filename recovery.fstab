@@ -1,0 +1,14 @@
+# Android fstab file.
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+#TODO: Add 'check' as fs_mgr_flags with data partition.
+# Currently we dont have e2fsck compiled. So fs check would failed.
+#Rui.Tuo@BSP.Fingerprint.Secure, 2020/01/13, change the initial permission of vendor/firmware_mnt
+#<src>                                                 <mnt_point>               <type>  <mnt_flags and options>                                 <fs_mgr_flags>
+
+system                                 /system       ext4    ro,barrier=1,discard                                                               wait
+vendor                                 /vendor       ext4    ro,barrier=1,discard                                                               wait
+/dev/block/bootdevice/by-name/cache    /cache        ext4    nosuid,noatime,nodev                                                               defaults,backup=0,wipeingui
+/dev/block/bootdevice/by-name/userdata /data         f2fs    noatime,nosuid,nodev,nodiscard,reserve_root=32768,resgid=1065,fsync_mode=nobarrier wait,check,formattable,fileencryption=ice,wrappedkey
+/dev/block/bootdevice/by-name/misc     /misc         emmc    defaults                                                                           defaults
