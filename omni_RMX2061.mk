@@ -18,13 +18,11 @@
 
 # Release name
 PRODUCT_RELEASE_NAME := RMX2061
-DEVICE_PATH := device/realme/RMX2061
-
 $(call inherit-product, device/realme/RMX2061/device.mk)
 
 # Inherit some common OrangeFox stuff.
 $(call inherit-product, vendor/omni/config/common.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := RMX2061
