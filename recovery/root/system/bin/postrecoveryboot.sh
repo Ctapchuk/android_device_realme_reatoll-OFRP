@@ -4,12 +4,12 @@
 # system and vendor in some zip installers and in the gui
 #
 sleep 1
-mount -w /vendor > /dev/null
-mount -w /system_root > /dev/null
+mount -w /vendor > /dev/null 2>&1
+mount -w /system_root > /dev/null 2>&1
 
 sleep 1
-umount /vendor > /dev/null
-umount /system_root > /dev/null
+umount /vendor > /dev/null 2>&1
+umount /system_root > /dev/null 2>&1
 
 exit 0
 #
