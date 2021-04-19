@@ -1,15 +1,10 @@
-ro.display.series=realme 6 Pro
 ro.product.name=RMX2061
 ro.product.product.device=RMX2061
-ro.product.board=atoll
-ro.board.platform=atoll
 sys.usb.controller=a600000.dwc3
 sys.usb.rndis.func.name=rndis_bam
 sys.usb.rmnet.func.name=rmnet_bam
 persist.sys.isUsbOtgEnabled=true
 vendor.gatekeeper.disable_spu=true
 ro.adb.secure=0
-ro.boot.dynamic_partitions=true
-ro.sf.lcd_density=420
 ro.boot.avb_version=1.0
 ro.boot.vbmeta.avb_version=1.0
