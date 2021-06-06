@@ -68,7 +68,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 
 	#OFR settings
 	export OF_SKIP_MULTIUSER_FOLDERS_BACKUP=1
-	export OF_QUICK_BACKUP_LIST="/data;/super;/boot;"
+	export OF_QUICK_BACKUP_LIST="/data;/boot;"
 	export OF_SCREEN_H=2400
 	export OF_STATUS_H=132
 	export OF_STATUS_INDENT_LEFT=261
