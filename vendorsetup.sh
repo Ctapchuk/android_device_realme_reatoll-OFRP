@@ -62,23 +62,24 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_PATCH_AVB20=1
 	export OF_DONT_PATCH_ENCRYPTED_DEVICE=1 
 	
-        #OTA
-        export OF_KEEP_DM_VERITY=1
-     
+	#OTA
+	export OF_KEEP_DM_VERITY=1
+
 	#OFR settings
 	export OF_SKIP_MULTIUSER_FOLDERS_BACKUP=1
-        export OF_QUICK_BACKUP_LIST="/data;/super;/boot;"
+	export OF_QUICK_BACKUP_LIST="/data;/super;/boot;"
 	export OF_SCREEN_H=2400
 	export OF_STATUS_H=132
 	export OF_STATUS_INDENT_LEFT=261
 	export OF_STATUS_INDENT_RIGHT=34
 	export OF_ALLOW_DISABLE_NAVBAR=0
-        export FOX_ADVANCED_SECURITY=1
-        export OF_FLASHLIGHT_ENABLE=1
-        export OF_USE_GREEN_LED=0
-        export FOX_DELETE_AROMAFM=1
-        export OF_RUN_POST_FORMAT_PROCESS=1
-        export OF_ENABLE_USB_STORAGE=1
+	export FOX_ADVANCED_SECURITY=1
+	export OF_FLASHLIGHT_ENABLE=1
+	export OF_USE_GREEN_LED=0
+	export FOX_DELETE_AROMAFM=1
+	export OF_RUN_POST_FORMAT_PROCESS=1
+	export OF_ENABLE_USB_STORAGE=1
+	export OF_NO_SPLASH_CHANGE=1
 
 	# let's see what are our build VARs
 	if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then
