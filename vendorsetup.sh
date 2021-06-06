@@ -77,7 +77,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
         export OF_FLASHLIGHT_ENABLE=1
         export OF_USE_GREEN_LED=0
         export FOX_DELETE_AROMAFM=1
-        export FOX_ENABLE_APP_MANAGER=1
         export OF_RUN_POST_FORMAT_PROCESS=1
         export OF_ENABLE_USB_STORAGE=1
 
