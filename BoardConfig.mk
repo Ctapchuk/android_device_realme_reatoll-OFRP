@@ -133,16 +133,39 @@ RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_INCLUDE_NTFS_3G := true
-TW_INCLUDE_FUSE_NTFS := true
-TW_USE_TOOLBOX := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
+
+# Set brightness path and level
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_MAX_BRIGHTNESS := 2048
 TW_DEFAULT_BRIGHTNESS := 1200
+
+# Qcom EDL mode
+TW_HAS_EDL_MODE := true
+
+# Include some binaries
+TW_INCLUDE_LIBRESETPROP := true
+TW_INCLUDE_RESETPROP := true 
+TW_INCLUDE_REPACKTOOLS := true
+
+# Use Toolbox instead of Busybox
+TW_USE_TOOLBOX := true 
+
+# Debug-tools
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
-TARGET_USES_MKE2FS := true
-TW_NO_SCREEN_BLANK := true
-TW_HAS_EDL_MODE := true
+
+# Excludes
+TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
+
+# Set custom paths
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file"
+
+# Other flags
+TW_NO_LEGACY_PROPS := true
+TW_OVERRIDE_SYSTEM_PROPS := "ro.build.version.sdk" #needed for Android 11 Gapps
+TW_NO_SCREEN_BLANK := true
+TARGET_SUPPORTS_64_BIT_APPS := true
+
 #
