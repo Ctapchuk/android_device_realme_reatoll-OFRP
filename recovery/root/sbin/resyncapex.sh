@@ -1,4 +1,4 @@
-#!/sbin/bash
+#!/sbin/sh
 
 #Fixes Migrate mounting data errors
 

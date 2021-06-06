@@ -28,17 +28,10 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-
-on early-init
-    setprop recovery.perf.mode 1
-
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
     write /sys/class/power_supply/usb/otg_switch 1
-
-on boot
-    setprop recovery.perf.mode 0
 
 on property:ro.crypto.type=file
     setprop ro.crypto.state encrypted
