@@ -55,6 +55,6 @@
 /efsg           emmc    /dev/block/sdf10                           flags=backup=1;subpartitionof=/efs1
 
 # Removable storage
-/usb_otg        auto    /dev/block/sdg1       /dev/block/sdg       flags=display="USB-OTG";storage;wipeingui;removable;fsflags="utf8"
-/external_sd    auto    /dev/block/mmcblk0p1  /dev/block/mmcb0k1   flags=display="MicroSD";storage;wipeingui;removable;fsflags="nosuid,nodev,utf8"
+/usb_otg        auto    /dev/block/sdg1       /dev/block/sdg       flags=display="USB-Storage";storage;wipeingui;removable;fsflags="utf8"
+/sdcard1        auto    /dev/block/mmcblk0p1  /dev/block/mmcb0k1   flags=display="MicroSD";storage;wipeingui;removable;fsflags="nosuid,nodev,utf8"
 #
