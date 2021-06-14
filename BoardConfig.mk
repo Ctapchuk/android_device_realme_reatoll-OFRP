@@ -162,7 +162,7 @@ TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
 
 # Set custom paths
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
-TARGET_USE_CUSTOM_LUN_FILE_PATH := "/config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file"
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/config/usb_gadget/g1/functions/mass_storage.0/lun.0/file"
 
 # Other flags
 TW_NO_LEGACY_PROPS := true
