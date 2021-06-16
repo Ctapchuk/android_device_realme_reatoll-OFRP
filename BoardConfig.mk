@@ -157,6 +157,9 @@ TW_USE_TOOLBOX := true
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 
+# Languages
+TW_EXTRA_LANGUAGES := true
+
 # Excludes
 TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
 
