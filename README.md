@@ -6,14 +6,6 @@ OrangeFox Recovery Project (OFRP) R11.x for realme 6 Pro (RMX2061/3)
 # How to build
 Check OFRP official guide https://wiki.orangefox.tech/en/dev/building
 
-# Fix decryption on Android 11 (RUI2.0) thanks @logotoy73 for helping
-1. To provide decryption /data on Android 11 with keymaster@4.0 you need to fix mounting binderfs
---Apply these commits to the required repositories to fix the binderfs mount error (now the recovery will not get stuck on the splash screen):
-https://github.com/omnirom/android_system_sepolicy/commit/50c5d731e0aa4098aac293e4024b213b5c445b99
-https://github.com/omnirom/android_system_sepolicy/commit/74affd140396b74840e5dd8018b423ffcbe25a18
-https://github.com/TeamWin/android_bootable_recovery/commit/cd79c90d27941edbda6a92593835aec2a99c2ee9
-2. Now all you have to do is configure the flags to support decryption
-
 # Device specifications
 
 Basic   | Spec Sheet
