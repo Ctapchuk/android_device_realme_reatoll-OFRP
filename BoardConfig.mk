@@ -128,6 +128,9 @@ VENDOR_SECURITY_PATCH := 2099-12-31
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
 
+# Add sepolicy for fixing binderfs mounting with android-10 sources
+include $(DEVICE_PATH)/sepolicy/sepolicy.mk
+
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
 RECOVERY_SDCARD_ON_DATA := true

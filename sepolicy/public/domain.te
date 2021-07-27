@@ -1,0 +1,3 @@
+# /dev/binderfs needs to be accessed by everyone too!
+allow domain binderfs:dir { getattr search };
+allow domain binderfs_logs_proc:dir search;
