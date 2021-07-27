@@ -35,6 +35,7 @@ if [ -z "$1" -a -z "$FOX_BUILD_DEVICE" ]; then
 fi
 
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
+	export DEVICE_PATH=device/realme/RMX2061
 	export LC_ALL="C.UTF-8"
  	export ALLOW_MISSING_DEPENDENCIES=true
 	export PLATFORM_VERSION=20.1.0
@@ -48,6 +49,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_DISABLE_MIUI_SPECIFIC_FEATURES=1
 	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
 	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
+	export FOX_USE_SPECIFIC_MAGISK_ZIP="$PWD/$DEVICE_PATH/magisk/Magisk.zip"
 	
 	#OFR binary files
 	export FOX_REPLACE_BUSYBOX_PS=1

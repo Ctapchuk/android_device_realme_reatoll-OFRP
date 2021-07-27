@@ -18,7 +18,6 @@
 
 # Release name
 PRODUCT_RELEASE_NAME := RMX2061
-DEVICE_PATH := device/realme/RMX2061
 
 $(call inherit-product, device/realme/RMX2061/device.mk)
 
