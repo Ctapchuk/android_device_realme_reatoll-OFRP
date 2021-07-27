@@ -28,17 +28,12 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-on fs
-    wait /dev/block/platform/soc/${ro.boot.bootdevice}
-    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
-    write /sys/class/power_supply/usb/otg_switch 1
+on init
     chmod 0660 /dev/qseecom
     chown system drmrpc /dev/qseecom
     chmod 0664 /dev/ion
     chown system system /dev/ion
-    install_keyring
 
-on init
     mkdir /dev/binderfs
     mount binder binder /dev/binderfs stats=global
     chmod 0755 /dev/binderfs
@@ -48,12 +43,18 @@ on init
     symlink /dev/binderfs/binder /dev/binder
     symlink /dev/binderfs/hwbinder /dev/hwbinder
     symlink /dev/binderfs/vndbinder /dev/vndbinder
-    setprop crypto.ready 1
+
     mkdir /tmp/install
     mkdir /tmp/install/bin
 
+on fs
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    write /sys/class/power_supply/usb/otg_switch 1
+    setprop crypto.ready 1
+
 # Separate copy needed to use /sbin/linker64 instead of /system/bin/linker64
-service sbinqseecomd /system/bin/qseecomd
+service qseecomd /system/bin/qseecomd
     user root
     group root
     setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
@@ -71,18 +72,11 @@ service keystore_auth /system/bin/keystore_auth
 # keystore is started and stopped on demand by TWRP
 service keystore /system/bin/keystore /tmp/misc/keystore
     user root
-    group root drmrpc readproc
+    group root drmrpc readproc log
     disabled
     seclabel u:r:recovery:s0
-
-service gatekeeper-1-0 /system/bin/android.hardware.gatekeeper@1.0-service-qti
-    user root
-    group root
-    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
-    disabled
-    seclabel u:r:recovery:s0
-
-service keymaster-4-0 /system/bin/android.hardware.keymaster@4.0-service-qti
+    
+service gatekeeper-1-0-qti /system/bin/android.hardware.gatekeeper@1.0-service-qti
     user root
     group root
     setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
@@ -90,20 +84,31 @@ service keymaster-4-0 /system/bin/android.hardware.keymaster@4.0-service-qti
     oneshot
     seclabel u:r:recovery:s0
 
-on boot
-    setprop sys.usb.config adb
+service keymaster-4-0-qti /system/bin/android.hardware.keymaster@4.0-service-qti
+    user root
+    group root
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
 
-on property:crypto.ready=0
-    stop sbinqseecomd
-    stop keymaster-4-0
-    stop gatekeeper-1-0
-    stop servicemanager
-
-on property:crypto.ready=1
-    start sbinqseecomd
+on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
+    install_keyring
 
 on property:vendor.sys.listeners.registered=true
-    start keymaster-4-0
-    start gatekeeper-1-0
+    start gatekeeper-1-0-qti
+    start keymaster-4-0-qti
+
+on property:twrp.all.users.decrypted=true
+    setprop crypto.ready 0
+    stop qseecomd
+    stop gatekeeper-1-0-qti
+    stop keymaster-4-0-qti
+     
+on property:crypto.ready=1 && property:hwservicemanager.ready=true
+    start qseecomd
+
+on property:sys.listeners.registered=true
+    start keymaster-4-0-qti
 
 #
