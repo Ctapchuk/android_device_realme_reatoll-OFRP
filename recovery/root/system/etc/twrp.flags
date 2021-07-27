@@ -12,6 +12,7 @@
 
 /boot           emmc    /dev/block/sde11
 /dtbo           emmc    /dev/block/sde19                           flags=display="Dtbo";flashimg;backup=1
+/metadata       ext4    /dev/block/sda9                            flags=display="Metadata";flashimg=0;backup=0;wipeingui=0
 /recovery       emmc    /dev/block/sde23                           flags=display="Recovery";flashimg;backup=1
 
 # Modem Backup
