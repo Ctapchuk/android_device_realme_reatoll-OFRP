@@ -45,8 +45,8 @@
 /persist        ext4    /dev/block/sda2                            flags=display="Persist"
 /persist_image  emmc    /dev/block/sda2                            flags=display="Persist";flashimg;backup=1
 /vbmeta         emmc    /dev/block/sde18                           flags=display="Vbmeta";flashimg;backup=1
-/vbmeta_system  emmc    /dev/block/sde16                           flags=display="Vbmeta_system";flashimg;backup=1
-/vbmeta_vendor  emmc    /dev/block/sde17                           flags=display="Vbmeta_vendor";flashimg;backup=1
+/vbmeta_system  emmc    /dev/block/sde16                           flags=display="Vbmeta-System";flashimg;backup=1
+/vbmeta_vendor  emmc    /dev/block/sde17                           flags=display="Vbmeta-Vendor";flashimg;backup=1
 
 # EFS Backup
 /efs1           emmc    /dev/block/sdf4                            flags=display="EFS";backup=1
