@@ -126,7 +126,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := 2099-12-31
 TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FBE := true
+BOARD_USES_QCOM_FBE_DECRYPTION := true
 
 # Add sepolicy for fixing binderfs mounting with android-10 sources
 include $(DEVICE_PATH)/sepolicy/sepolicy.mk
