@@ -171,8 +171,8 @@ TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone4/temp"
 
 # Other flags
 TW_NO_LEGACY_PROPS := true
-TW_OVERRIDE_SYSTEM_PROPS := "ro.build.version.sdk" #needed for Android 11 Gapps
 TW_NO_SCREEN_BLANK := true
 TARGET_SUPPORTS_64_BIT_APPS := true
+TW_EXLUCDE_APEX := true
 
 #
