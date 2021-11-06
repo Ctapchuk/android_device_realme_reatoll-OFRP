@@ -38,7 +38,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export DEVICE_PATH=device/realme/RMX2061
 	export LC_ALL="C.UTF-8"
  	export ALLOW_MISSING_DEPENDENCIES=true
-	export PLATFORM_VERSION=20.1.0
+	export PLATFORM_VERSION=127
  	
  	#OFR build settings & info
 	export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
