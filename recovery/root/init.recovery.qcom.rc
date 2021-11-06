@@ -48,8 +48,16 @@ on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
     write /sys/class/power_supply/usb/otg_switch 1
+    
+service unified-script /system/bin/unified-script.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
 
 on boot
     setprop sys.usb.config adb
+    start unified-script
 
 #

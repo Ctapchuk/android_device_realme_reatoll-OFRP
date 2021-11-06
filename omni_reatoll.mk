@@ -17,19 +17,19 @@
 #
 
 # Release name
-PRODUCT_RELEASE_NAME := RMX2061
+PRODUCT_RELEASE_NAME := reatoll
 
-$(call inherit-product, device/realme/RMX2061/device.mk)
+$(call inherit-product, device/realme/reatoll/device.mk)
 
 # Inherit some common OrangeFox stuff.
 $(call inherit-product, vendor/omni/config/common.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := RMX2061
-PRODUCT_NAME := omni_RMX2061
+PRODUCT_DEVICE := reatoll
+PRODUCT_NAME := omni_reatoll
 PRODUCT_BRAND := realme
-PRODUCT_MODEL := realme 6 Pro
+PRODUCT_MODEL := realme atoll
 PRODUCT_MANUFACTURER := realme
 
 #
