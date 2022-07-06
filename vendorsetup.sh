@@ -64,13 +64,11 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_ENABLE_LPTOOLS=1
 	
 	#OFR patches
-	export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
 	export OF_PATCH_AVB20=1
-	export OF_DONT_PATCH_ENCRYPTED_DEVICE=1
+	export OF_KEEP_DM_VERITY_FORCED_ENCRYPTION=1
 	export FOX_BUGGED_AOSP_ARB_WORKAROUND="1546300800"; # Tuesday, January 1, 2019 12:00:00 AM GMT+00:00 
 	
 	#OTA
-	export OF_KEEP_DM_VERITY=1
 	export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
 	export OF_OTA_BACKUP_STOCK_BOOT_IMAGE=1
 	export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
@@ -92,6 +90,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_NO_SPLASH_CHANGE=1
 	export OF_HIDE_NOTCH=1
 
+	lunch twrp_$FDEVICE-eng
 	# let's see what are our build VARs
 	if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then
   	   export | grep "FOX" >> $FOX_BUILD_LOG_FILE

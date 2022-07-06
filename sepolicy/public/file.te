@@ -1,3 +1,0 @@
-type binderfs, fs_type;
-type binderfs_logs, fs_type;
-type binderfs_logs_proc, fs_type;

@@ -21,15 +21,16 @@ PRODUCT_RELEASE_NAME := reatoll
 
 $(call inherit-product, device/realme/reatoll/device.mk)
 
-# Inherit some common OrangeFox stuff.
-$(call inherit-product, vendor/omni/config/common.mk)
+# Inherit some common TWRP stuff.
+$(call inherit-product, vendor/twrp/config/common.mk)
+
+# Inherit from common AOSP config
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := reatoll
-PRODUCT_NAME := omni_reatoll
+PRODUCT_NAME := twrp_reatoll
 PRODUCT_BRAND := realme
 PRODUCT_MODEL := realme atoll
 PRODUCT_MANUFACTURER := realme
-
 #

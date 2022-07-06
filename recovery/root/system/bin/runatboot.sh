@@ -1,4 +1,4 @@
-#!/sbin/sh
+#!/system/bin/sh
 
 # This script is needed to automatically set device props.
 
@@ -26,6 +26,7 @@ load_RMX2170()
     echo "realme 7 Pro detected - using RMX2170 props"
 }
 
+
 project=$(cat /proc/oppoVersion/prjName)
 echo $project
 
@@ -33,8 +34,11 @@ case $project in
     "206B1")
         load_RMX2170
         ;;
-    *)
+    "19721")
         load_RMX2061
+        ;;
+     *)
+        echo "Invalid device code name"
         ;;
 esac
 

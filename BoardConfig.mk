@@ -87,9 +87,6 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 
 # Android Verified Boot
 BOARD_AVB_ENABLE := true
-BOARD_AVB_RECOVERY_ADD_HASH_FOOTER_ARGS += \
-    --prop com.android.build.boot.os_version:$(PLATFORM_VERSION) \
-    --prop com.android.build.boot.security_patch:$(PLATFORM_SECURITY_PATCH)
 BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 1
@@ -127,9 +124,7 @@ PLATFORM_SECURITY_PATCH := 2127-12-31
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 TW_INCLUDE_CRYPTO := true
 BOARD_USES_QCOM_FBE_DECRYPTION := true
-
-# Add sepolicy for fixing binderfs mounting with android-10 sources
-include $(DEVICE_PATH)/sepolicy/sepolicy.mk
+TW_USE_FSCRYPT_POLICY := 1
 
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
@@ -141,7 +136,7 @@ TW_INPUT_BLACKLIST := "hbtp_vm"
 
 # Set brightness path and level
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
-TW_MAX_BRIGHTNESS := 2048
+TW_MAX_BRIGHTNESS := 2047
 TW_DEFAULT_BRIGHTNESS := 1200
 
 # Qcom EDL mode
@@ -151,9 +146,6 @@ TW_HAS_EDL_MODE := true
 TW_INCLUDE_LIBRESETPROP := true
 TW_INCLUDE_RESETPROP := true 
 TW_INCLUDE_REPACKTOOLS := true
-
-# Use Toolbox instead of Busybox
-TW_USE_TOOLBOX := true 
 
 # Debug-tools
 TWRP_INCLUDE_LOGCAT := true
@@ -170,10 +162,7 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone4/temp"
 
 # Other flags
-TW_NO_LEGACY_PROPS := true
 TW_OVERRIDE_SYSTEM_PROPS := "ro.build.version.sdk"
-TW_NO_SCREEN_BLANK := true
-TARGET_SUPPORTS_64_BIT_APPS := true
 TW_EXCLUDE_APEX := true
 
 #

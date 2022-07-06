@@ -15,6 +15,6 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_reatoll.mk
+    $(LOCAL_DIR)/twrp_reatoll.mk
 
-COMMON_LUNCH_CHOICES := omni_reatoll-eng
+COMMON_LUNCH_CHOICES := twrp_reatoll-eng
