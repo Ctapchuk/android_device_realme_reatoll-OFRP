@@ -4,11 +4,11 @@
 
 # mount_point  fstype   device            device2                  flags
 
-/system_root    ext4    /dev/block/mapper/system                   flags=removable
-/system_ext     ext4    /dev/block/mapper/system_ext               flags=display="System-EXT";removable
-/product        ext4    /dev/block/mapper/product                  flags=removable
-/vendor         ext4    /dev/block/mapper/vendor                   flags=removable
-/odm            ext4    /dev/block/mapper/odm                      flags=removable
+/system_root    auto    /dev/block/mapper/system                   flags=removable
+/system_ext     auto    /dev/block/mapper/system_ext               flags=display="System-EXT";removable
+/product        auto    /dev/block/mapper/product                  flags=removable
+/vendor         auto    /dev/block/mapper/vendor                   flags=removable
+/odm            auto    /dev/block/mapper/odm                      flags=removable
 
 /boot           emmc    /dev/block/sde11
 /dtbo           emmc    /dev/block/sde19                           flags=display="Dtbo";flashimg;backup=1
