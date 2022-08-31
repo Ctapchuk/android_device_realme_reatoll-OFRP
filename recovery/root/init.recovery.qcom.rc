@@ -33,6 +33,8 @@ import /init.recovery.qcom_decrypt.rc
 on init
     mkdir /tmp/install
     mkdir /tmp/install/bin
+    chmod 0777 /system/bin/gui-props.sh
+    start gui-props
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
@@ -42,4 +44,11 @@ on fs
 on boot
     start health-hal-2-1
     setprop sys.usb.config adb
+
+service gui-props /system/bin/gui-props.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
 #
