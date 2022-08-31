@@ -89,26 +89,6 @@
         <version>1.0</version>
     </hal>
     <hal format="hidl">
-        <name>vendor.oplus.hardware.biometrics.faceservice</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IFaceHalService</name>
-            <instance>faceservice</instance>
-        </interface>
-        <fqname>@1.0::IFaceHalService/faceservice</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.oplus.hardware.biometrics.fingerprintservice</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IFingerprintHalService</name>
-            <instance>fingerprintservice</instance>
-        </interface>
-        <fqname>@1.0::IFingerprintHalService/fingerprintservice</fqname>
-    </hal>
-    <hal format="hidl">
         <name>vendor.qti.hardware.radio.atcmdfwd</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
