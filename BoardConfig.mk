@@ -127,7 +127,6 @@ BOOT_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 BOARD_USES_QCOM_FBE_DECRYPTION := true
 TW_INCLUDE_CRYPTO := true
-TW_USE_FSCRYPT_POLICY := 1
 
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
@@ -136,7 +135,7 @@ TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_INCLUDE_NTFS_3G := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
-TW_NO_SCREEN_BLANK := true # never turn off display, but allow reduce brightness to 0 to save battery; fix display touch because turning off display breaks it
+TW_NO_SCREEN_BLANK := true
 
 # Set brightness path and level
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
@@ -147,7 +146,6 @@ TW_DEFAULT_BRIGHTNESS := 1200
 TW_HAS_EDL_MODE := true
 
 # Include some binaries
-TW_INCLUDE_LIBRESETPROP := true
 TW_INCLUDE_RESETPROP := true 
 TW_INCLUDE_REPACKTOOLS := true
 TW_INCLUDE_PYTHON := true
