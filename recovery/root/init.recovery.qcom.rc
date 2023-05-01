@@ -45,6 +45,17 @@ on boot
     start health-hal-2-1
     setprop sys.usb.config adb
 
+on property:twrp.decrypt.done=true
+    chmod 0777 /system/bin/ofrpotafix.sh
+    start ofrpotafix
+
+service ofrpotafix /system/bin/ofrpotafix.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+ 
 service gui-props /system/bin/gui-props.sh
     user root
     group root
