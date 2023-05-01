@@ -18,11 +18,12 @@ Check OFRP official guide https://wiki.orangefox.tech/en/dev/building
 | Storage                 | (64/128) / 128 GB                                           |
 | MicroSD                 | MicroSDXC                                                   |
 | Battery                 | Non-removable Li-Po 4300 / 4500 mAh                         |
-| Display                 | 1080 x 2400 pixels, 20:9 ratio, 6.6 inches IPS LCD (~399 ppi density) / 6.4 inches Super AMOLED (~411 ppi density) |
+| Display                 | 1080 x 2400 (20:9), 6.6 inches IPS LCD (~399 ppi) \ 6.4 inches Super AMOLED (~411 ppi)|
 
 
-## Device picture
+## Devices pictures
 ![realme 6 pro](https://fdn2.gsmarena.com/vv/pics/realme/realme-6-pro-1.jpg "realme 6 pro")
+![realme 7 pro](https://fdn2.gsmarena.com/vv/pics/realme/realme-7-pro-1.jpg "realme 7 pro")
 
 ---
 ## Copyright notice
