@@ -3,6 +3,7 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
 # mount_point  fstype   device            device2                  flags
+/system_image   emmc    /dev/block/mapper/system
 
 /boot           emmc    /dev/block/bootdevice/by-name/boot
 /dtbo           emmc    /dev/block/bootdevice/by-name/dtbo           flags=display="Dtbo";flashimg;backup=1
