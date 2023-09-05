@@ -24,13 +24,26 @@ load_RMX2170()
     echo "I:unified-script: realme 7 Pro detected - using RMX2170 props" >> $LOGF;
 }
 
+load_RMX3081()
+{
+    resetprop "ro.product.model" "realme 8 Pro";
+    resetprop "ro.product.name" "RMX3081";
+    resetprop "ro.build.product" "RMX3081";
+    resetprop "ro.product.device" "RMX3081";
+    resetprop "ro.product.product.device" "RMX3081";
+    resetprop "ro.vendor.product.device" "RMX3081";
+    echo "I:unified-script: realme 8 Pro detected - using RMX3081 props" >> $LOGF;
+}
+
 local LOGF=/tmp/recovery.log;
 project=$(cat /proc/oppoVersion/prjName);
 
-echo "I:unified-script: oppo project name:" $project >> $LOGF;
 resetprop "ro.separate.soft" $project;
 
 case $project in
+    "20711")
+        load_RMX3081
+        ;;
     "206B1")
         load_RMX2170
         ;;
@@ -38,7 +51,7 @@ case $project in
         load_RMX2061
         ;;
      *)
-        echo "E:unified-script: unsupported project!" $project >> $LOGF;
+        echo "E:unified-script: unsupported project:" $project >> $LOGF;
         ;;
 esac
 
