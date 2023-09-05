@@ -85,6 +85,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_NO_SPLASH_CHANGE=1
 	export OF_HIDE_NOTCH=1
 	export FOX_ENABLE_APP_MANAGER=1
+	export FOX_CUSTOM_FOLDER_FOR_SETTINGS="/custom"
 
 	lunch twrp_$FDEVICE-eng
 	# let's see what are our build VARs
