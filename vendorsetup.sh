@@ -61,6 +61,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_USE_XZ_UTILS=1
 	export FOX_USE_SED_BINARY=1
 	export OF_ENABLE_LPTOOLS=1
+	export FOX_USE_NANO_EDITOR=1
 	
 	#OFR patches
 	export OF_PATCH_AVB20=1
